@@ -15,20 +15,16 @@ public class TestRandomMatch {
 			for(int tu = 0; tu < T; tu++){
 				int[] a = new int[N];
 				int counter = 0;
-				//生成随机数数组a
 				for(int i = 0; i < N; i++){
 					a[i] = StdRandom.uniform(100000, 999999);
 				}
 				Arrays.sort(a);
 				
 				int[] b = new int[N];
-				//生成随机数数组b
 				for(int i = 0; i < N; i++){
 					b[i] = StdRandom.uniform(100000, 999999);
 				}
 				Arrays.sort(b);
-				
-				//重复个数
 
 				int loc = -1;
 				for(int n = 0; n < a.length; n++){

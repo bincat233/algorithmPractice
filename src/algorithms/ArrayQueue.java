@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 public class ArrayQueue<Item> implements Queue<Item>, Iterable<Item> {
 	private Item[] a;
-	//first为队首，last为队尾+1
 	private int first;
 	private int last;
 	private int N;

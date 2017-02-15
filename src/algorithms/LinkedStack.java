@@ -1,10 +1,12 @@
 package algorithms;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 public class LinkedStack<Item> implements Stack<Item> {
-	private Node first;//Õ»¶¥
-	private int N;//ÔªËØÊýÁ¿
+	private Node first;//Õ»ï¿½ï¿½
+	private int N;//Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int pushTimes, popTimes;
 	private class Node{
 		Item item;
 		Node next;
@@ -19,6 +21,7 @@ public class LinkedStack<Item> implements Stack<Item> {
 		first = new Node();
 		first.item = item;
 		first.next = oldFirst;
+		pushTimes++;
 		N++;
 	}
 	
@@ -26,6 +29,7 @@ public class LinkedStack<Item> implements Stack<Item> {
 		if(isEmpty()) return null;
 		Item item = first.item;
 		first = first.next;
+		popTimes++;
 		N--;
 		return item;
 	}
@@ -35,14 +39,18 @@ public class LinkedStack<Item> implements Stack<Item> {
 	}
 	
 	private class LinkedStackIterator implements Iterator<Item>{
+		private int pu = pushTimes;
+		private int po = popTimes;
 		private Node n = first;
 		@Override
 		public boolean hasNext() {
+			test();
 			return n != null;
 		}
 
 		@Override
 		public Item next() {
+			test();
 			Item i = n.item;
 			n = n.next;
 			return i;
@@ -52,7 +60,10 @@ public class LinkedStack<Item> implements Stack<Item> {
 		public void remove() {
 		}
 		
-		
+		private void test(){
+			if(pu!=pushTimes||po!=popTimes)
+				throw new ConcurrentModificationException();
+		}
 		
 	}
 
