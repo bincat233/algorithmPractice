@@ -1,16 +1,23 @@
-package test;
+package sort;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
-public class Selection {
+public class Shell {
 	public static void sort(Comparable[] a) {
 		int N = a.length;
-		for(int i = 0; i < N; i++){
-			int min = i;
-			for(int j = i+1; j < N; j++)
-				if(less(a[j],a[min])) min = j;
-			exch(a, i, min);
+		int h = 1;//间隔
+		while(h < N/3) h = 3*h+1;
+		while(h >= 1) {
+			for(int i = h; i < N; i++) {//对i进行一轮插入
+				Comparable t = a[i];
+				int j;
+				for(j = i; j >= h && less(a[j], a[j-h]); j -= h) {
+					a[j] = a[j-h];
+				}
+				a[j] = t;
+			}
+			h /= 3;
 		}
 	}
 	
@@ -35,10 +42,10 @@ public class Selection {
 	}
 	
 	public static void main(String[] args) {
-		String[] a = In.readStrings();
+//		String[] a = In.readStrings();
+		String[] a = {"1","A","u","d","3","a","2"};
 		sort(a);
 		assert isSorted(a);
 		show(a);
 	}
-	
 }

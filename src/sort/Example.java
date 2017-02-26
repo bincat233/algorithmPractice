@@ -1,4 +1,4 @@
-package test;
+ package sort;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
@@ -27,7 +27,8 @@ public class Example {
 	}
 	
 	public static void main(String[] args) {
-		String[] a = In.readStrings();
+//		String[] a = In.readStrings();
+		String[] a = {"s","a","D","w","q","2","3","B","0","A","1","A","u","d","3","a","2",};
 		sort(a);
 		assert isSorted(a);
 		show(a);

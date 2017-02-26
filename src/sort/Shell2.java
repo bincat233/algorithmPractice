@@ -1,15 +1,10 @@
-package test;
+package sort;
 
-import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
-public class Insertion {
-	public static void sort(Comparable[] a) {
-		int N = a.length;
-		for(int i = 1; i < N; i++){
-			for(int j = i; j > 0 && less(a[j],a[i]); j--)
-				exch(a, j, j-1);
-		}
+public class Shell2 {
+	public static void sort(Comparable[] a){
+		
 	}
 	
 	private static boolean less(Comparable a, Comparable b) 
@@ -22,6 +17,7 @@ public class Insertion {
 		for(int i = 0; i < a.length; i++) {
 			StdOut.print(a[i] + " ");
 		}
+		
 		StdOut.println();
 	}
 	
@@ -33,7 +29,8 @@ public class Insertion {
 	}
 	
 	public static void main(String[] args) {
-		String[] a = In.readStrings();
+//		String[] a = In.readStrings();
+		String[] a = {"1","A","u","d","3","a","2"};
 		sort(a);
 		assert isSorted(a);
 		show(a);
